@@ -47,5 +47,19 @@ export default function solution(content) {
   console.log(
     `Процент выживших пассажиров: ${procentSurvived.toFixed(2) * 100}%`
   );
+
+  // Step 5
+  const nameStartsWithA = normalizedData.reduce((acc, passenger) => {
+    if (passenger[3].startsWith('A', 1)) {
+      acc.push(passenger[3]);
+    }
+    return acc;
+  }, []);
+
+  const namesWithoutQuotes = nameStartsWithA.map((name) =>
+    name.replace(/"/g, '')
+  );
+
+  console.log(`Имена пассажиров, начинающиеся на A: ${namesWithoutQuotes}`);
   // END
 }
