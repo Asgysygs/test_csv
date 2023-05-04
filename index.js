@@ -21,5 +21,21 @@ export default function solution(content) {
   }, []);
 
   console.log(`Все наименования портов посадки: ${embarked}`);
+
+  // Step 3
+  const males = normalizedData.filter((passenger) => passenger[5] === 'male');
+  const females = normalizedData.filter(
+    (passenger) => passenger[5] === 'female'
+  );
+
+  const malesCount = males.length / Number(passengersCount[0]);
+  const femalesCount = females.length / Number(passengersCount[0]);
+
+  console.log(
+    `Процент мужчин: ${malesCount.toFixed(2) * 100}%, процент женщин: ${
+      femalesCount.toFixed(2) * 100
+    }%`
+  );
+
   // END
 }
