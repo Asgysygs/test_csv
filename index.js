@@ -12,5 +12,14 @@ export default function solution(content) {
   const passengersCount = normalizedData[normalizedData.length - 1];
   console.log(`Количество пассажиров: ${passengersCount[0]}`);
 
+  // Step 2
+  const embarked = normalizedData.reduce((acc, passenger) => {
+    if (passenger[11] !== '') {
+      acc.push(passenger[11]);
+    }
+    return _.uniq(acc);
+  }, []);
+
+  console.log(`Все наименования портов посадки: ${embarked}`);
   // END
 }
