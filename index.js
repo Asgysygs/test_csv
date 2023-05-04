@@ -10,7 +10,8 @@ export default function solution(content) {
 
   // Step 1
   const passengersCount = normalizedData[normalizedData.length - 1];
-  console.log(`Количество пассажиров: ${passengersCount[0]}`);
+  const numberOfPassengers = Number(passengersCount[0]);
+  console.log(`Количество пассажиров: ${numberOfPassengers}`);
 
   // Step 2
   const embarked = normalizedData.reduce((acc, passenger) => {
@@ -28,8 +29,8 @@ export default function solution(content) {
     (passenger) => passenger[5] === 'female'
   );
 
-  const malesCount = males.length / Number(passengersCount[0]);
-  const femalesCount = females.length / Number(passengersCount[0]);
+  const malesCount = males.length / numberOfPassengers;
+  const femalesCount = females.length / numberOfPassengers;
 
   console.log(
     `Процент мужчин: ${malesCount.toFixed(2) * 100}%, процент женщин: ${
@@ -37,5 +38,14 @@ export default function solution(content) {
     }%`
   );
 
+  // Step 4
+  const survivedPassengers = normalizedData.filter(
+    (passenger) => Number(passenger[1]) === 1
+  );
+
+  const procentSurvived = survivedPassengers.length / numberOfPassengers;
+  console.log(
+    `Процент выживших пассажиров: ${procentSurvived.toFixed(2) * 100}%`
+  );
   // END
 }
